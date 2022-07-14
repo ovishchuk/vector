@@ -1,7 +1,7 @@
 /**
- * @file list.inl
+ * @file vector.inl
  * @author Olexandr Ishchuk (o.v.ishchuk@gmail.com)
- * @brief implements list.hpp
+ * @brief implements vector.hpp
  * @date 2022-07-14
  * 
  */
@@ -9,19 +9,22 @@
 #include <iostream>
 #include <cassert>
 
+namespace ovi
+{
+
 //============================================================================//
 // public methods
 
 template<class T>
-List<T>::List()
+Vector<T>::Vector()
 {
-    // new List must be empty and of zero length
+    // new Vector must be empty and of zero length
     nodeArraySize = 0;
     nodeArray = nullptr;
 }
 
 template<class T>
-List<T>::~List()
+Vector<T>::~Vector()
 {
     // clean up
     eraseAll();
@@ -29,7 +32,7 @@ List<T>::~List()
 
 // for access by index
 template<class T>
-T& List<T>::operator[] (const unsigned index)
+T& Vector<T>::operator[] (const unsigned index)
 {
     assert( index >= 0 && index < nodeArraySize && nodeArray != nullptr );
 
@@ -38,7 +41,7 @@ T& List<T>::operator[] (const unsigned index)
 
 // for access by index ( for const objects)
 template<class T>
-const T& List<T>::operator[] (const unsigned index) const
+const T& Vector<T>::operator[] (const unsigned index) const
 {
     assert( index >= 0 && index < nodeArraySize && nodeArray != nullptr );
 
@@ -46,7 +49,7 @@ const T& List<T>::operator[] (const unsigned index) const
 }
 
 template<class T>
-void List<T>::insertHead(T *node)
+void Vector<T>::insertHead(T *node)
 {
     // create new array with size grater by one item and increase size variable
     T **newArray = new T*[++nodeArraySize];
@@ -69,7 +72,7 @@ void List<T>::insertHead(T *node)
 
 template<class T>
 template<typename Data>
-void List<T>::insertHead(Data data)
+void Vector<T>::insertHead(Data data)
 {
     // create item with value if such constructor was defined
     T *newNode = new T(data);
@@ -79,7 +82,7 @@ void List<T>::insertHead(Data data)
 }
 
 template<class T>
-void List<T>::insertTail(T *node)
+void Vector<T>::insertTail(T *node)
 {
     // create new array with size grater by one item and increase size variable
     T **newArray = new T*[++nodeArraySize];
@@ -101,7 +104,7 @@ void List<T>::insertTail(T *node)
 
 template<class T>
 template<typename Data>
-void List<T>::insertTail(Data data)
+void Vector<T>::insertTail(Data data)
 {
     // create item with value if such constructor was defined
     T *newNode = new T(data);
@@ -111,7 +114,7 @@ void List<T>::insertTail(Data data)
 }
 
 template<class T>
-void List<T>::eraseTail()
+void Vector<T>::eraseTail()
 {
     // nothing will be done if array not exists
     if ( nodeArray != nullptr )
@@ -148,7 +151,7 @@ void List<T>::eraseTail()
 }
 
 template<class T>
-void List<T>::eraseAll()
+void Vector<T>::eraseAll()
 {
     // arase array from tail to head
     while ( nodeArray != nullptr )
@@ -160,7 +163,7 @@ void List<T>::eraseAll()
 }
 
 template<class T> unsigned
-List<T>::length()
+Vector<T>::length()
 {
     // size of array
     return nodeArraySize;
@@ -168,3 +171,5 @@ List<T>::length()
 
 //============================================================================//
 // private methods
+
+} // namespace ovi

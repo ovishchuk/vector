@@ -1,6 +1,7 @@
 #include <iostream>
-#include "list.hpp"
+#include "vector.hpp"
 #include <string>
+
 
 class Cat
 {
@@ -15,43 +16,43 @@ private:
 
 int main()
 {
-    List<int> nList;
+    ovi::Vector<int> nVector;
 
-    nList.insertHead(10);
-    std::cout << nList[0] << std::endl;
+    nVector.insertHead(10);
+    std::cout << nVector[0] << std::endl;
 
     int newInt = 9;
-    nList.insertHead(newInt);
-    std::cout << nList[0] << std::endl;
+    nVector.insertHead(newInt);
+    std::cout << nVector[0] << std::endl;
 
     //================================================//
 
-    List<Cat> catList;
+    ovi::Vector<Cat> catVector;
 
-    catList.insertHead("Tommy");
+    catVector.insertHead("Tommy");
 
     Cat *KittyCat = new Cat("Kitty");
-    catList.insertHead(KittyCat);
+    catVector.insertHead(KittyCat);
 
     Cat BillyCat("Billy");
-    catList.insertHead(BillyCat);
+    catVector.insertHead(BillyCat);
 
-    catList.insertTail(new Cat("Donny"));
-    catList.insertTail("Jimmy");
+    catVector.insertTail(new Cat("Donny"));
+    catVector.insertTail("Jimmy");
 
-    for ( size_t i = 0; i < catList.length(); i++ )
+    for ( size_t i = 0; i < catVector.length(); i++ )
     {
-        std::cout << catList[i].Name() << " says ";
-        catList[i].say();
+        std::cout << catVector[i].Name() << " says ";
+        catVector[i].say();
     }
 
-    catList.eraseTail();
+    catVector.eraseTail();
 
     std::cout << std::endl;
-    for ( size_t i = 0; i < catList.length(); i++ )
+    for ( size_t i = 0; i < catVector.length(); i++ )
     {
-        std::cout << catList[i].Name() << " says ";
-        catList[i].say();
+        std::cout << catVector[i].Name() << " says ";
+        catVector[i].say();
     }
 
     return 0;

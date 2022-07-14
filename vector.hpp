@@ -1,5 +1,5 @@
 /**
- * @file list.hpp
+ * @file Vector.hpp
  * @author Oleksandr Ishchuk (o.v.ishchuk@gmail.com)
  * @date 2022-07-14
  * @brief std::vector like container
@@ -10,16 +10,18 @@
  * insert item before or after index;
  */
 
-#ifndef LIST_LIST_HPP
-#define LIST_LIST_HPP
+#ifndef OVI_VECTOR_HPP
+#define OVI_VECTOR_HPP
 
+namespace ovi
+{
 
 template<class T>
-class List
+class Vector
 {
 public:
-    List<T>();
-    ~List<T>();
+    Vector<T>();
+    ~Vector<T>();
     T& operator[] (const unsigned index);
     const T& operator[] (const unsigned index) const;
     
@@ -48,6 +50,8 @@ private:
     unsigned nodeArraySize;
 };
 
-#include "list.inl"
+} // namespace ovi
 
-#endif // LIST_LIST_HPP
+#include "vector.inl"
+
+#endif // OVI_VECTOR_HPP
